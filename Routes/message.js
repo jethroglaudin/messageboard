@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
 // access: public
 
 router.get("/:username", async (req, res) => {
-    const username = req.params.userName;
+    const username = req.params.username;
     const userMessages = await Message.find({ userName: username });
     if(userMessages == null){
        return res.status(404).send(`User was not found`);
@@ -54,7 +54,7 @@ router.get("/:username", async (req, res) => {
 router.put('/:id', async (req, res) => {
     const updatedMessage = await Message.findByIdAndUpdate(req.params.id,{
         userName: req.body.userName,
-        email: req.body.lastName,
+        email: req.body.email,
         message: req.body.message
     }, { new: true });
 
