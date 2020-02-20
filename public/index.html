@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="scriptAxios.js"></script>
+    <!-- <script src="scriptFetch.js"></script> -->
     <title>MessageBoard</title>
 </head>
 <body>
-    HELLO WORLD
+    <h1>HTTP REQUEST MESSAGE BOARD</h1>
+    <button id="all" onclick="getAllMessages()">GET ALL MESSAGES</button>
+    <div id="allMessages" style="padding: 10px">
+
+    </div>
+    <input type="text" name="userName" id="userName" placeholder="userName">
+    <button id="specific" onclick="getSpecificMessages()" >GET SPECIFIC MESSAGE</button>
+    <div id="specificMessage" style="padding: 10px">
+
+    </div>
+        <label for="userName">username:</label>
+        <input type="text" id="userNamePost">
+        <label for="email">email:</label>
+        <input type="text" id="email">
+        <label for="message">message:</label>
+        <input type="text" id="message">
+        <label for="message">Id:</label>
+        <input type="text" id="id">
+        <button id="post" onclick="createMessage()">Create Message</button>
+        <button id="update" onclick="updateMessage()">Update Message</button>
+        <button id="update" onclick="deleteMessage()">Delete Message</button>
 </body>
 </html>
