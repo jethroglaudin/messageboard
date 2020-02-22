@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Message = require('../Models/Message');
+const isEmpty = require("is-empty");
 
 
 // router.get("/", async (req, res) => {
@@ -42,13 +43,22 @@ router.post("/", async (req, res) => {
 // @desc: Get a user's messages
 // access: public
 
-router.get("/:username", async (req, res) => {
-    const username = req.params.username;
-    const userMessages = await Message.find({ userName: username });
-    if(userMessages == null){
-       return res.status(404).send(`User was not found`);
+router.get("/:userName", async (req, res) => {
+    const userName = req.params.userName;
+    const errors = {};
+    const userMessages = await Message.find({ userName: userName });
+    if(isEmpty(userMessages)){
+       return res.status(404).json("no messages");
     };
     res.send(userMessages);
+    // Message.find({ userName: username },).then(user => {
+    //     if(!user) {
+    //         errors.noMessage = "No message found with that username"
+    //         res.status(404).json(errors);
+    //     }
+    //     res.json(user);
+    // })
+    // .catch(err => res.status(404).send(err));
 });
 
 router.put('/:id', async (req, res) => {
