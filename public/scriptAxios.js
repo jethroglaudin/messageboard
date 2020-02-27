@@ -58,6 +58,6 @@ const deleteMessage = () => {
     const deleteUrl = `/api/messages/${messageID}`;
     axios.delete(deleteUrl)
     .then(response => console.log(response))
-    .catch(error => console.log(error));
+    .catch(error => console.log(error));ç
     
 }
