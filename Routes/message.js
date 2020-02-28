@@ -24,6 +24,7 @@ router.get("/getallmessages", async (req, res) => {
 // access: public
 router.post("/", async (req, res) => {
     const { userName, email, message } = req.body;
+    console.log(req.body);
 
     if(!userName || !email || !message) {
         return res.status(400).send("Input field is missing");
@@ -45,7 +46,6 @@ router.post("/", async (req, res) => {
 
 router.get("/:userName", async (req, res) => {
     const userName = req.params.userName;
-    const errors = {};
     const userMessages = await Message.find({ userName: userName });
     if(isEmpty(userMessages)){
        return res.status(404).json("no messages");
